@@ -1,0 +1,1004 @@
+/* ==========================================================================
+   Colectivo Jiu Jitsu — Estilo Editorial Bespoke ($10k-$20k Studio Standard)
+   Monolith Dojo: High-Contrast Discipline
+   Palette, Typographic Hierarchy, Structural Hairlines & LED Tube Sweeps
+   ========================================================================== */
+
+:root {
+  --theme-mode: dark;
+  --bg-primary: #000000;
+  --bg-secondary: #0B0B0B;
+  --bg-contrast: #FFFFFF;
+  --bg-warm: #000000;
+  --bg-dark: #090A0B;
+  --bg-card: #0e0f11;
+  --bg-card-hover: #151619;
+  
+  --text-primary: #FFFFFF;
+  --text-dark: #FFFFFF;
+  --text-muted: #888888;
+  --text-light: #F6F4EF;
+  --text-on-contrast: #000000;
+  --text-on-accent: #000000;
+  
+  --accent: #FFFFFF;
+  --accent-hover: #E31E24;
+  --accent-soft: #1A1A1A;
+  --gold-accent: #D4AF37;
+  --border-hairline: rgba(245, 243, 238, 0.12);
+  --border-hairline-bright: rgba(255, 255, 255, 0.28);
+  
+  --radius-card: 2px;
+  --radius-media: 2px;
+  --radius-button: 2px;
+  
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --display-weight: 500;
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle Cinematic Film Grain Overlay */
+.cjj-film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 950;
+  opacity: 0.036;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* Typography Scale — Sentence Case, No 800/900 Bolds */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6.2vw, 5.2rem);
+  line-height: 1.02;
+}
+
+h2 {
+  font-size: clamp(1.85rem, 4vw, 3.4rem);
+  line-height: 1.08;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Layout Utilities */
+.cjj-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 48px);
+}
+
+.cjj-section-spacing {
+  padding-block: clamp(64px, 9vw, 120px);
+}
+
+.cjj-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Navbar */
+.cjj-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  height: 72px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-hairline);
+  transition: background-color 300ms ease;
+}
+
+.cjj-navbar-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.cjj-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+/* Official Logo Emblem: Intact #FEFEFE background, no mix-blend-mode */
+.cjj-logo-emblem {
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  background-color: #FEFEFE;
+  border: 1px solid var(--border-hairline);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cjj-logo-emblem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cjj-brand-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.cjj-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.cjj-nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 220ms ease;
+  position: relative;
+  padding-block: 6px;
+}
+
+.cjj-nav-link:hover,
+.cjj-nav-link.active {
+  color: #FFFFFF;
+}
+
+.cjj-nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #FFFFFF;
+}
+
+.cjj-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mobile Hamburger Menu */
+.cjj-hamburger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-button);
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.cjj-mobile-menu {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  border-top: 1px solid var(--border-hairline);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 899;
+}
+
+.cjj-mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  padding-block: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* The Moment: Dojo Linear Overhead LED Tube Fixture & Light Sweep */
+.cjj-led-sweep-strip {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.cjj-led-sweep-strip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -25%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  animation: cjj-led-sweep 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes cjj-led-sweep {
+  0% {
+    left: -35%;
+  }
+  50%, 100% {
+    left: 110%;
+  }
+}
+
+/* Hero Section */
+.cjj-hero {
+  position: relative;
+  min-height: 94vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: clamp(60px, 8vw, 100px);
+  padding-top: 120px;
+  overflow: hidden;
+}
+
+.cjj-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cjj-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: brightness(0.68) contrast(1.15);
+}
+
+.cjj-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0.88) 85%,
+    #000000 100%
+  );
+  z-index: 1;
+}
+
+.cjj-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.cjj-hero-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 18px;
+}
+
+.cjj-hero-title {
+  margin-bottom: 20px;
+}
+
+.cjj-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: rgba(246, 244, 239, 0.86);
+  max-width: 580px;
+  margin-bottom: 36px;
+  line-height: 1.5;
+}
+
+.cjj-hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Disciplinas Section (Asymmetric Expanding Columns on Hover) */
+.cjj-disciplines-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.cjj-discipline-col {
+  flex: 1 1 0%;
+  min-width: 0;
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: flex 520ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease;
+}
+
+.cjj-disciplines-grid:hover .cjj-discipline-col:hover {
+  flex: 1.45 1 0%;
+  border-color: var(--border-hairline-bright);
+}
+
+.cjj-discipline-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), filter 300ms ease;
+  filter: brightness(0.65) grayscale(20%);
+}
+
+.cjj-discipline-col:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.78) grayscale(0%);
+}
+
+.cjj-discipline-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.88) 82%);
+  z-index: 1;
+}
+
+.cjj-discipline-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cjj-discipline-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  opacity: 0.6;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.cjj-discipline-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.cjj-discipline-title {
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.cjj-discipline-desc {
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.74);
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Schedule Interactive Component */
+.cjj-schedule-box {
+  background: #090A0B;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.cjj-schedule-top-fixture {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cjj-schedule-top-fixture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+  width: 40%;
+  animation: cjj-led-sweep 3.8s ease-in-out infinite;
+}
+
+.cjj-schedule-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-hairline);
+  scrollbar-width: none;
+}
+
+.cjj-schedule-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cjj-schedule-tab {
+  flex: 1;
+  min-width: 140px;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border-hairline);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.cjj-schedule-tab:last-child {
+  border-right: none;
+}
+
+.cjj-schedule-tab.active {
+  background: #141619;
+  color: #FFFFFF;
+}
+
+.cjj-schedule-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.cjj-schedule-row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--border-hairline);
+  transition: background-color 200ms ease;
+}
+
+.cjj-schedule-row:last-child {
+  border-bottom: none;
+}
+
+.cjj-schedule-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.cjj-schedule-time {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #FFFFFF;
+}
+
+.cjj-schedule-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.cjj-schedule-coach {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* Staff Mosaic */
+.cjj-staff-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.cjj-staff-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: border-color 260ms ease, transform 260ms ease;
+}
+
+.cjj-staff-card:hover {
+  border-color: var(--border-hairline-bright);
+}
+
+.cjj-staff-photo {
+  aspect-ratio: 4/5;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  border-radius: 0 !important;
+}
+
+.cjj-staff-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(85%) contrast(1.15);
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), filter 350ms ease;
+}
+
+.cjj-staff-card:hover .cjj-staff-photo img {
+  transform: scale(1.04);
+  filter: grayscale(15%) contrast(1.1);
+}
+
+/* Services Page Split Layout */
+.cjj-service-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 48px;
+}
+
+.cjj-service-split--reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.cjj-service-split--reverse .cjj-service-split-copy {
+  order: 2;
+}
+
+.cjj-service-split--reverse .cjj-service-split-media {
+  order: 1;
+}
+
+.cjj-about-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.cjj-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  margin-top: 44px;
+}
+
+.cjj-location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+.cjj-staff-info {
+  padding: 24px;
+}
+
+.cjj-staff-role {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.cjj-staff-name {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.cjj-staff-bio {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+/* Bento Community & Podium Grid */
+.cjj-bento-podium {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.cjj-bento-podium-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  padding: 36px;
+  position: relative;
+}
+
+.cjj-podium-trophy {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  line-height: 1;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+/* Membership Plans Grid */
+.cjj-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+
+.cjj-plan-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 260ms ease, transform 260ms ease;
+}
+
+.cjj-plan-card:hover {
+  border-color: var(--border-hairline-bright);
+  transform: translateY(-4px);
+}
+
+.cjj-plan-card.featured {
+  background: #121417;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.cjj-plan-header {
+  margin-bottom: 24px;
+}
+
+.cjj-plan-name {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.cjj-plan-freq {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.cjj-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cjj-plan-feature-item {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cjj-plan-feature-bullet {
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+}
+
+/* Footer */
+.cjj-footer {
+  background: #050506;
+  border-top: 1px solid var(--border-hairline);
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.cjj-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.cjj-footer-brand p {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.cjj-footer-heading {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.cjj-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cjj-footer-links a {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: color 200ms ease;
+}
+
+.cjj-footer-links a:hover {
+  color: #FFFFFF;
+}
+
+.cjj-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-hairline);
+  padding-top: 32px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Service Detail Page Styles */
+.cjj-detail-hero {
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+.cjj-detail-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+}
+
+.cjj-detail-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-block: 36px;
+}
+
+.cjj-benefit-card {
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-card);
+}
+
+.cjj-benefit-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.cjj-benefit-card p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Responsive Breakpoints (Mobile-First 390px) */
+@media (max-width: 1024px) {
+  .cjj-disciplines-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cjj-staff-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cjj-plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cjj-bento-podium {
+    grid-template-columns: 1fr;
+  }
+  .cjj-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cjj-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .cjj-service-split,
+  .cjj-service-split--reverse {
+    grid-template-columns: 1fr;
+  }
+  .cjj-service-split--reverse .cjj-service-split-copy,
+  .cjj-service-split--reverse .cjj-service-split-media {
+    order: initial;
+  }
+}
+
+@media (max-width: 768px) {
+  .cjj-navbar {
+    height: 64px;
+  }
+  .cjj-navbar-inner {
+    gap: 12px;
+  }
+  .cjj-logo-emblem {
+    width: 40px;
+    height: 40px;
+  }
+  .cjj-brand-title {
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .cjj-nav-links,
+  .cjj-nav-cta {
+    display: none !important;
+  }
+  .cjj-hamburger {
+    display: flex;
+    flex-shrink: 0;
+  }
+  .cjj-mobile-menu {
+    top: 64px;
+  }
+  .cjj-section-spacing {
+    padding-block: 52px;
+  }
+  .cjj-disciplines-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .cjj-discipline-col {
+    height: 360px;
+    padding: 22px 20px;
+  }
+  .cjj-schedule-box {
+    margin-top: 28px;
+  }
+  .cjj-schedule-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 18px 18px;
+  }
+  .cjj-staff-mosaic {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .cjj-bento-podium {
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .cjj-bento-podium-item {
+    padding: 24px 20px;
+  }
+  .cjj-plans-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .cjj-detail-benefits {
+    gap: 14px;
+    margin-block: 24px;
+  }
+  .cjj-benefit-card {
+    padding: 16px;
+  }
+  .cjj-about-stats {
+    gap: 24px;
+    margin-top: 28px;
+  }
+  .cjj-contact-grid,
+  .cjj-location-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .cjj-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .cjj-hero {
+    min-height: 86vh;
+    padding-top: 96px;
+    padding-bottom: 44px;
+  }
+  h1 {
+    font-size: clamp(2rem, 8.2vw, 2.65rem);
+  }
+  .cjj-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cjj-hero-buttons a,
+  .cjj-hero-buttons button {
+    width: 100%;
+  }
+}
